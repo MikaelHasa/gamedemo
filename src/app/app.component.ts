@@ -8,7 +8,8 @@ import Phaser from 'phaser';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, PhaserGame],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
@@ -26,16 +27,16 @@ export class AppComponent {
 
   }
 
-  public addSprite() {
-    const scene = this.phaserRef().scene;
-    if (scene) {
-
-      const x = Phaser.Math.Between(64, scene.scale.width - 64);
-      const y = Phaser.Math.Between(64, scene.scale.height - 64);
-
-      //  `add.sprite` is a Phaser GameObjectFactory method and it returns a Sprite Game Object instance
-      scene.add.sprite(x, y, 'star');
-
-    }
-  }
+//  public addSprite() {
+//    const scene = this.phaserRef().scene;
+//    if (scene) {
+//
+//      const x = Phaser.Math.Between(64, scene.scale.width - 64);
+//      const y = Phaser.Math.Between(64, scene.scale.height - 64);
+//
+//      //  `add.sprite` is a Phaser GameObjectFactory method and it returns a Sprite Game Object instance
+//      scene.add.sprite(x, y, 'star');
+//
+//    }
+//  }
 }

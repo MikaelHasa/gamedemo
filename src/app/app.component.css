@@ -1,0 +1,94 @@
+/* From Uiverse.io by SelfMadeSystem */
+/* Yoinked from CodePen, but improved the animation
+so that it is smooth among other more minor things */
+
+#layout-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  height: 100vh;
+}
+
+#Map-selection-sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+}
+
+#Map-selection-sidebar header {
+  font-size: 1rem;
+  margin-bottom: 0rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+#map-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  width: fit-content;
+  padding: 10px;
+}
+
+#map-thumbnail {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+}
+
+#start-game-button, 
+#map-selection-button {
+  width: 140px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  color: rgba(255, 255, 255, 0.87);
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#start-game-button:hover, 
+#map-selection-button:hover {
+  border: 1px solid #0ec3c9;
+  color: #0ec3c9;
+  
+}
+
+#start-game-button:active, 
+#map-selection-button:active {
+  background-color: #0ec3c9;
+}
+
+
+#start-game-button:disabled, 
+#map-selection-button:disabled {
+  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+#main-game{
+  border: 5px solid black;
+  flex-grow: 1; 
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
