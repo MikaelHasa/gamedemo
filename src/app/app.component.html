@@ -3,14 +3,17 @@
     <li id="Map-selection-sidebar">
       <header>Map Selection</header>
       <div id="map-item-container">
-        <button id="map-selection-button">
+        <button type="button" id="map-selection-button" (click)="handleMapSelection('greenfield')" >
             <img id="map-thumbnail" src="assets/map_greenfield_thumbnail.png" alt="Greenfield"/>
+        </button>
+        <button type="button" id="map-selection-button" (click)="handleMapSelection('desert')" >
+            <img id="map-thumbnail" src="assets/map_desert_thumbnail.png" alt="Desert"/>
         </button>
       </div>
     </li>
     <phaser-game id="main-game" />
     <div>
-      <button id="start-game-button">Start Game</button>
+      <button type="button" id="start-game-button" (click)="startGame()">Start Game</button>
     </div>
   </div>
 </main>

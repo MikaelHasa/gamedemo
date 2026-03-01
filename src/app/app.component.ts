@@ -27,6 +27,14 @@ export class AppComponent {
 
   }
 
+  public handleMapSelection(mapName: string) {
+    console.log('Selected map:', mapName);
+  }
+
+  public startGame() {
+    console.log('Start Game!')
+  }
+
 //  public addSprite() {
 //    const scene = this.phaserRef().scene;
 //    if (scene) {

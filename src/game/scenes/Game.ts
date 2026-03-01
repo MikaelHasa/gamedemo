@@ -5,6 +5,7 @@ export class Game extends Scene {
 
   private platform?: Phaser.Physics.Arcade.StaticGroup;
   private player?: Phaser.Physics.Arcade.Sprite;
+  private carrot?: Phaser.Physics.Arcade.Sprite;
 
   constructor() {
     super('Game');
@@ -13,6 +14,7 @@ export class Game extends Scene {
   preload() {
     this.load.image('map', 'assets/map_greenfield.png');
     this.load.image('walls', 'assets/walls_greenfield.png');
+    this.load.image('carrot', 'assets/carrot.png');
     //this.load.image('horse_r', 'assets/horse_red.png');
     //this.load.image('horse_g', 'assets/horse_green.png');
     this.load.image('horseb', 'assets/bluehorse.png');
@@ -21,6 +23,7 @@ export class Game extends Scene {
   create() {
     this.add.image(512, 384, 'map');
     this.player = this.physics.add.sprite(100, 50, 'horseb');
+    this.carrot = this.physics.add.staticSprite(100, 300, 'carrot');
   
     this.platform = this.physics.add.staticGroup();
     const walls = this.add.image(512, 384, 'walls') as Phaser.Physics.Arcade.Sprite;
