@@ -29,10 +29,12 @@ export class AppComponent {
 
   public handleMapSelection(mapName: string) {
     console.log('Selected map:', mapName);
+    EventBus.emit('map-selected', mapName);
   }
 
   public startGame() {
     console.log('Start Game!')
+    EventBus.emit('start-game');
   }
 
 //  public addSprite() {

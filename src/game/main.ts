@@ -16,16 +16,17 @@ const config: Phaser.Types.Core.GameConfig = {
       //    y: 0,
       //    width: scene.sys.scale.width,
       //    height: scene.sys.scale.height,
-      //    gravity: {
-      //        x: 0,
-      //        y: 0
-      //    },
-      //    checkCollision: {
-      //        up: true,
-      //        down: true,
-      //        left: true,
-      //        right: true
-      //    },
+      gravity: {
+          x: 0,
+          y: 0
+      },
+      debug: true,
+      checkCollision: {
+          up: true,
+          down: true,
+          left: true,
+          right: true
+      },
       //    customUpdate: false,
       //    fixedStep: true,
       //    fps: 60,
@@ -47,8 +48,8 @@ const config: Phaser.Types.Core.GameConfig = {
     },
   },
   scene: [
-    MainGame
-  ]
+    MainGame,
+  ],
 };
 
 const StartGame = (parent: string) =>
