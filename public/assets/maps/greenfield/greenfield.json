@@ -47,9 +47,115 @@
          "width":16,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":5,
+         "name":"carrot",
+         "objects":[
+                {
+                 "gid":13,
+                 "height":64,
+                 "id":11,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":30.3388123305108,
+                 "y":349.361226409873
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":3,
+         "name":"horse",
+         "objects":[
+                {
+                 "gid":14,
+                 "height":64,
+                 "id":12,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"horseType",
+                         "type":"string",
+                         "value":"red"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":36.00597708783,
+                 "y":88.6716475731917
+                }, 
+                {
+                 "gid":15,
+                 "height":64,
+                 "id":13,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"horseType",
+                         "type":"string",
+                         "value":"blue"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":166.350766506171,
+                 "y":153.27732580663
+                }, 
+                {
+                 "gid":16,
+                 "height":64,
+                 "id":14,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"horseType",
+                         "type":"string",
+                         "value":"orange"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":167.484199457635,
+                 "y":89.8050805246555
+                }, 
+                {
+                 "gid":17,
+                 "height":64,
+                 "id":15,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"horseType",
+                         "type":"string",
+                         "value":"pink"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":39.4062759422215,
+                 "y":153.27732580663
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":3,
- "nextobjectid":1,
+ "nextlayerid":6,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -67,6 +173,14 @@
          "tilecount":12,
          "tileheight":64,
          "tilewidth":64
+        }, 
+        {
+         "firstgid":13,
+         "source":"prizes.tsx"
+        }, 
+        {
+         "firstgid":14,
+         "source":"horses.tsx"
         }],
  "tilewidth":64,
  "type":"map",

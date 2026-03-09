@@ -4,7 +4,7 @@ import { Horse } from '../Horse';
 
 export class Game extends Scene
 {
-  Horse: Horse;
+  Horses: Horse[] = [];
   Gameover: boolean = false;
   SelectedMap: { map: string; walls: string };
 
@@ -18,24 +18,21 @@ export class Game extends Scene
 
   preload(): void
   {
-    // Load map assets
-    this.load.image('map-gf', 'assets/maps/map_greenfield.png');
-    this.load.image('walls-gf', 'assets/maps/walls_greenfield.png');
-    this.load.image('map-d', 'assets/maps/map_desert.png');
-    this.load.image('walls-d', 'assets/maps/walls_desert.png');
 
     this.load.image('tiles', 'assets/maps/greenfield/spritesheet.png');
     this.load.tilemapTiledJSON('map', 'assets/maps/greenfield/greenfield.json');
 
     // Load horse assets and carrot
-    this.load.image('horseo', 'assets/horses/orangehors.png');
-    this.load.image('horsep', 'assets/horses/pinkhors.png');
-    this.load.image('horseb', 'assets/horses/bluehors.png');
-    this.load.image('horser', 'assets/horses/redhors.png');
+    this.load.image('orangehors', 'assets/horses/orangehors.png');
+    this.load.image('bluehors', 'assets/horses/bluehors.png');
+    this.load.image('pinkhors', 'assets/horses/pinkhors.png');
+    this.load.image('redhors', 'assets/horses/redhors.png');
     this.load.image('carrot', 'assets/horses/carrot.png');
 
   }
 
+/*
+Add after fixing new maps
   handleMapSelection = (mapName: string) =>
   {
     switch (mapName)
@@ -52,25 +49,52 @@ export class Game extends Scene
 
     this.scene.restart({ SelectedMap: this.SelectedMap });
 
-  }
-  create(): void{
-    //this.walls = this.physics.add.staticGroup();
-    this.carrots = this.physics.add.staticGroup();
-    //EventBus.on('map-selected', this.handleMapSelection, this);
-    //this.add.image(512, 384, this.SelectedMap.map);
-    //this.walls.create(512, 384, 'horser');
     
+  }
+*/
+
+  create(): void{
+
     const map = this.add.tilemap('map');
     const tiles: any = map.addTilesetImage('spritesheet', 'tiles');
     const groundLayer: any = map.createLayer('bg', tiles);
     const wallLayer: any = map.createLayer('walls', tiles);
-    
-    this.carrots.create(100, 350, 'carrot');
-    
-    this.Horse = new Horse(this, 100, 50, 'horseo');
-    this.Horse.start();
 
-    this.physics.add.collider(this.Horse, wallLayer);
+    this.carrots = this.physics.add.staticGroup();
+    const carrotLayer = map.getObjectLayer('carrot');
+    if (carrotLayer) {
+      carrotLayer.objects.forEach(obj => {
+        this.carrots.create((obj.x || 0) + (obj.width || 0) / 2, (obj.y || 0) - (obj.height || 0) / 2, 'carrot');
+      });
+    }
+
     wallLayer.setCollisionBetween(8, 8);
+
+    const horseLayer = map.getObjectLayer('horse');
+    if (horseLayer) {
+      horseLayer.objects.forEach(obj => {
+        const horseTypeProperty = obj.properties?.find((property: any) => property.name === 'horseType');
+        const horseType = horseTypeProperty?.value;
+        if (!horseType) {
+          return;
+        }
+
+        const horseTextureKey = `${horseType}hors`;
+        const horseX = (obj.x || 0) + (obj.width || 0) / 2;
+        const horseY = (obj.y || 0) - (obj.height || 0) / 2;
+        const horse = new Horse(this, horseX, horseY, horseTextureKey);
+
+        horse.start();
+        this.physics.add.collider(horse, wallLayer);
+        this.Horses.push(horse);
+      });
+
+      for (let i = 0; i < this.Horses.length; i++) {
+        this.physics.add.collider(this.Horses[i], this.carrots);
+        for (let j = i + 1; j < this.Horses.length; j++) {
+          this.physics.add.collider(this.Horses[i], this.Horses[j]);
+        }
+      }
+    }
   }
 }
